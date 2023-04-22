@@ -37,7 +37,7 @@ int _printf(const char *format, ...)
 				}
 				break;
 		}
-		printf(format[i]);
+		printf("%c", format[i]);
 	}
 	va_end(str);
 	return (i);
