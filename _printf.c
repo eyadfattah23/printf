@@ -11,6 +11,11 @@ int _printf(const char *format, ...)
 	va_list str;
 	unsigned int i;
 
+	if (format == NULL)
+	{
+		return (0);
+	}
+	
 	va_start(str, format);
 	for (i = 0; format[i] != '\0'; i++)
 	{
@@ -18,25 +23,22 @@ int _printf(const char *format, ...)
 		switch (format[i])
 		{
 		case '%':
-				switch (format[i +  1])
+				switch (format[++i])
 				{
 				case 'c':
 					printf("%c", va_arg(str, int));
-					break;
+					continue;
 				case 's':
 					printf("%s", va_arg(str, char *));
-					break;
+					continue;
 				case '%':
 					printf("%%");
-					break;
-				default:
-					i++;	
-					break;
+					continue;
 				}
-		default:
-			printf("%c", format[i]);
-			break;
+				break;
 		}
+		printf(format[i]);
 	}
-	
+	va_end(str);
+	return (i);
 }
