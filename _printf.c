@@ -26,52 +26,56 @@ int _printf(const char *format, ...)
 {
 	va_list args;
 	unsigned int i, count = 0;
+	char *str_case;
 
 	if (format == NULL)
 	{
 		return (0);
 	}
-
 	va_start(args, format);
 	for (i = 0; format[i] != '\0'; i++)
 	{
-		/* code */
 		if (format[i] == '%')
 		{
 			i++;
-		
-		switch (format[i])
-		{
-		case 'c':
-		{
-			_putchar((char) va_arg(args, int));
-			count++;
-			break;
-		}
-		case 's':
-		{
-			_puts(va_arg(args, char *));
-			count += _strlen(va_arg(args, char *));
-			break;
-		}
-		case '%':
-		{
-			_putchar('%');
-			count++;
-			break;
-		}
-		default:
-		{
-		/*handling unknown specifiers*/
-			_putchar('%');
-			_putchar(format[i]);
-			count += 2;
-			break;
-		}
-
-		}
-		}
-		else
+			switch (format[i])
+			{
+				case 'c':
+				{
+					_putchar((char) va_arg(args, int));
+					count++;
+					break;
+				}
+				case 's':
+				{
+					str_case = va_arg(args, char *);
+					if (str_case == NULL)
+					{
+						_puts("(null)");
+						count += 5;
+					} else
+					{
+					_puts(str_case);
+					count += _strlen(str_case);
+					}
+					break;
+				}
+				case '%':
+				{
+					_putchar('%');
+					count++;
+					break;
+				}
+				default:
+				{
+					/*handling unknown specifiers*/
+					_putchar('%');
+					_putchar(format[i]);
+					count += 2;
+					break;
+				}
+			}
+		} else
 		{
 			_putchar(format[i]);
 			count++;
