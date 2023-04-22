@@ -9,7 +9,7 @@
 int _printf(const char *format, ...)
 {
 	va_list str;
-	unsigned int i, c = 0;
+	unsigned int i, count = 0;
 
 	if (format == NULL)
 	{
@@ -27,22 +27,22 @@ int _printf(const char *format, ...)
 				{
 				case 'c':
 					printf("%c", va_arg(str, int));
-					c++;
+					count++;
 					continue;
 				case 's':
 					printf("%s", va_arg(str, char *));
-					c++;
+					count++;
 					continue;
 				case '%':
 					printf("%%");
-					c++;
+					count++;
 					continue;
 				}
 				break;
 		}
 		printf("%c", format[i]);
-		c++;
+		count++;
 	}
 	va_end(str);
-	return (c);
+	return (count);
 }
