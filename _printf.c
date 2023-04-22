@@ -4,7 +4,7 @@
  * _printf - produces output according to a format.
  * @format: character string
  * @...: arguments to print
- * Return: 
+ * Return: length of string
  */
 int _printf(const char *format, ...)
 {
@@ -21,9 +21,11 @@ int _printf(const char *format, ...)
 				switch (format[i + 1])
 				{
 				case 'c':
-					/* code */
+					printf("%c", va_arg(str, int));
 					break;
-				
+				case 's':
+					printf("%s", va_arg(str, char *));
+					break;
 				default:
 					break;
 				}
