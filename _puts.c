@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * print_string - function to print string
+ * _puts - function to print string
  *
  * @x: char to be printed
  * Return: int - length of the string
