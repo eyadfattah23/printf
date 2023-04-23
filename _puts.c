@@ -5,7 +5,7 @@
  * @x: char to be printed
  * Return: int - length of the string
  */
-int _puts(va_list list)
+int puts(va_list list)
 {
  char *str;
  int i;
