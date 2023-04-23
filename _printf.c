@@ -66,6 +66,10 @@ int _printf(const char *format, ...)
 					count++;
 					break;
 				}
+				case 'd':
+				case 'i':
+					count += printf("%d", va_arg(args, int));
+					break;
 				default:
 				{
 					/*handling unknown specifiers*/
