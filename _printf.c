@@ -68,8 +68,7 @@ int _printf(const char *format, ...)
 				}
 				case 'd':
 				case 'i':
-					printf("%d", va_arg(args, int));
-					count++;
+					count += printf("%d", va_arg(args, int));
 					break;
 				default:
 				{
