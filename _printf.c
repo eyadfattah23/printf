@@ -61,11 +61,11 @@ int _printf(const char *format, ...)
 					count++;
 					break;
 				case 'd':
-                case 'i':
-                    int num = va_arg(args, int);
-                    printf("%d", num);
-                    count++;
-                    break;
+				case 'i':
+					int num = va_arg(args, int);
+					printf("%d", num);
+					count++;
+					break;
 				default:
 					/*handling unknown specifiers*/
 					_putchar('%');
