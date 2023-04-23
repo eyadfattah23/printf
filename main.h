@@ -7,5 +7,5 @@
 
 int _putchar(char c);
 int _printf(const char *format, ...);
-int puts(va_list list)
+int _puts(va_list list);
 #endif
