@@ -3,19 +3,17 @@
 /**
  * _strlen - returns the length of a string.
  * @s: string to be measured
- * Return: len of string;
+ * Return: length of string
  */
 
-int _strlen(char *s)
+int _strlen(const char *s)
 {
-	int i = 0;
-
-	while (*(s + i) != '\0')
-	{
-		i++;
-	}
-	return (i);
+	int len = 0;
+	while (s && s[len])
+		len++;
+	return (len);
 }
+
 /**
  * _printf - produces output according to a format.
  * @format: character string
@@ -24,67 +22,49 @@ int _strlen(char *s)
  */
 int _printf(const char *format, ...)
 {
-	va_list args;
-	unsigned int i, count = 0;
-	char *str_to_print;
+	if (!format)
+		return (-1);
 
-	if (format == NULL)
-	{
-		return (0);
-	}
+	va_list args;
 	va_start(args, format);
-	for (i = 0; format[i] != '\0'; i++)
+
+	int count = 0;
+	char *str;
+
+	for (; *format; format++)
 	{
-		if (format[i] == '%')
+		if (*format == '%')
 		{
-			i++;
-			switch (format[i])
+			format++;
+			switch (*format)
 			{
 				case 'c':
-				{
-					_putchar((char) va_arg(args, int));
-					count++;
+					count += _putchar(va_arg(args, int));
 					break;
-				}
 				case 's':
-				{
-					str_to_print = va_arg(args, char *);
-					if (str_to_print == NULL)
-					{
-						_puts("(null)");
-						count += 5;
-					} else
-					{
-					_puts(str_to_print);
-					count += _strlen(str_to_print);
-					}
+					str = va_arg(args, char *);
+					if (!str)
+						count += _puts("(null)");
+					else
+						count += _puts(str);
 					break;
-				}
 				case '%':
-				{
-					_putchar('%');
-					count++;
+					count += _putchar('%');
 					break;
-				}
 				case 'd':
 				case 'i':
 					count += printf("%d", va_arg(args, int));
 					break;
 				default:
-				{
-					/*handling unknown specifiers*/
-					_putchar('%');
-					_putchar(format[i]);
-					count += 2;
+					count += _putchar('%');
+					count += _putchar(*format);
 					break;
-				}
 			}
-		} else
-		{
-			_putchar(format[i]);
-			count++;
 		}
+		else
+			count += _putchar(*format);
 	}
+
 	va_end(args);
 	return (count);
 }
