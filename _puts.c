@@ -5,19 +5,19 @@
  * @x: char to be printed
  * Return: int - length of the string
  */
-int print_string(va_list x)
+int puts(va_list x)
 {
- char *stri;
+ char *str;
  int i;
 
  i = 0;
- stri = va_arg(x, char *);
- if (stri == NULL)
-  stri = "(null)";
+ str = va_arg(x, char *);
+ if (str == NULL)
+  str = "(null)";
 
- while (stri[i])
+ while (str[i])
  {
-  _putchar(stri[i]);
+  _putchar(str[i]);
   i++;
  }
 
