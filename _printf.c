@@ -61,7 +61,6 @@ int _printf(const char *format, ...)
 					count++;
 					break;
 				default:
-					/*handling unknown specifiers*/
 					_putchar('%');
 					_putchar(format[i]);
 					count += 2;
