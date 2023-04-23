@@ -1,17 +1,25 @@
 #include "main.h"
-
 /**
- * _puts - prints a string
- * @str: str to be printed
+ * print_string - function to print string
+ *
+ * @x: char to be printed
+ * Return: int - length of the string
  */
-
-void _puts(char *str)
+int print_string(va_list x)
 {
-	int i = 0;
+ char *stri;
+ int i;
 
-	while (*(str + i) != '\0')
-	{
-		_putchar(*(str + i));
-		i++;
-	}
+ i = 0;
+ stri = va_arg(x, char *);
+ if (stri == NULL)
+  stri = "(null)";
+
+ while (stri[i])
+ {
+  _putchar(stri[i]);
+  i++;
+ }
+
+ return (i);
 }
