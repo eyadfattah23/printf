@@ -26,7 +26,7 @@ int _printf(const char *format, ...)
 {
 	va_list args;
 	unsigned int i, count = 0;
-	char *str_case;
+	char *str_to_print;
 
 	if (format == NULL)
 	{
@@ -48,15 +48,15 @@ int _printf(const char *format, ...)
 				}
 				case 's':
 				{
-					str_case = va_arg(args, char *);
-					if (str_case == NULL)
+					str_to_print = va_arg(args, char *);
+					if (str_to_print == NULL)
 					{
 						_puts("(null)");
 						count += 5;
 					} else
 					{
-					_puts(str_case);
-					count += _strlen(str_case);
+					_puts(str_to_print);
+					count += _strlen(str_to_print);
 					}
 					break;
 				}
