@@ -2,7 +2,7 @@
 /**
  * _puts - function to print string
  *
- * @x: char to be printed
+ * @list: char to be printed
  * Return: int - length of the string
  */
 int _puts(va_list list)
