@@ -28,12 +28,7 @@ int _printf(const char *format, ...)
 	unsigned int i, count = 0;
 	char *str_case;
 
-	if (format == NULL)
-	{
-		return (0);
-	}
-	va_start(args, format);
-	for (i = 0; format[i] != '\0'; i++)
+	for (i = 0; (format[i] != '\0') && (format != NULL); i++)
 	{
 		if (format[i] == '%')
 		{
