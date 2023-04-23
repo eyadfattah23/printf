@@ -20,4 +20,5 @@ int _puts(va_list list)
 	i++;
 	}
 	return (i);
+
 }
