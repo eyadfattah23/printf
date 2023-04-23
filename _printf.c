@@ -28,7 +28,12 @@ int _printf(const char *format, ...)
 	unsigned int i, count = 0;
 	char *str_case;
 
-	for (i = 0; (format[i] != '\0') && (format != NULL); i++)
+	if (format == NULL)
+	{
+		return (0);
+	}
+	va_start(args, format);
+	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
 		{
@@ -36,10 +41,13 @@ int _printf(const char *format, ...)
 			switch (format[i])
 			{
 				case 'c':
+				{
 					_putchar((char) va_arg(args, int));
 					count++;
 					break;
+				}
 				case 's':
+				{
 					str_case = va_arg(args, char *);
 					if (str_case == NULL)
 					{
@@ -51,20 +59,21 @@ int _printf(const char *format, ...)
 					count += _strlen(str_case);
 					}
 					break;
+				}
 				case '%':
+				{
 					_putchar('%');
 					count++;
 					break;
-				case 'd':
-				case 'i':
-					printf("%d", va_arg(args, int));
-					count++;
-					break;
+				}
 				default:
+				{
+					/*handling unknown specifiers*/
 					_putchar('%');
 					_putchar(format[i]);
 					count += 2;
 					break;
+				}
 			}
 		} else
 		{
