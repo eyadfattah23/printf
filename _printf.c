@@ -5,25 +5,6 @@
  * @s: string to be measured
  * Return: len of string;
  */
-int print_number(int n)
-{
-        int count = 0;
-
-        if (n < 0)
-        {
-                count += _putchar('-');
-                n = -n;
-        }
-
-        if (n / 10)
-        {
-                count += print_number(n / 10);
-        }
-
-        count += _putchar(n % 10 + '0');
-
-        return (count);
-}
 
 int _strlen(char *s)
 {
@@ -45,9 +26,12 @@ int _printf(const char *format, ...)
 {
 	va_list args;
 	unsigned int i, count = 0;
+	char *str_to_print;
 
-	if (format == NULL || (*format == '%' && *(format + 1) == '\0'))
-		return (-1);
+	if (format == NULL)
+	{
+		return (0);
+	}
 	va_start(args, format);
 	for (i = 0; format[i] != '\0'; i++)
 	{
@@ -57,27 +41,49 @@ int _printf(const char *format, ...)
 			switch (format[i])
 			{
 				case 'c':
-					count += _char_print(args);
+				{
+					_putchar((char) va_arg(args, int));
+					count++;
 					break;
+				}
 				case 's':
-					count += _puts(args);
+				{
+					str_to_print = va_arg(args, char *);
+					if (str_to_print == NULL)
+					{
+						_puts("(null)");
+						count += 5;
+					} else
+					{
+					_puts(str_to_print);
+					count += _strlen(str_to_print);
+					}
 					break;
+				}
 				case '%':
+				{
 					_putchar('%');
 					count++;
 					break;
+				}
 				case 'd':
 				case 'i':
-					count += print_number(va_arg(args, int));
+					count += printf("%d", va_arg(args, int));
 					break;
 				default:
+				{
+					/*handling unknown specifiers*/
 					_putchar('%');
 					_putchar(format[i]);
 					count += 2;
 					break;
+				}
 			}
 		} else
-			count += _putchar(format[i]);
+		{
+			_putchar(format[i]);
+			count++;
+		}
 	}
 	va_end(args);
 	return (count);
