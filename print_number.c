@@ -13,7 +13,7 @@ int print_number(int n)
                 n = -n;
         }
 
-        if (n / 10)
+        if (n > 0)
         {
                 count += print_number(n / 10);
         }
