@@ -48,6 +48,7 @@ int _printf(const char *format, ...)
 					count++;
 					break;
 				case 'd':
+				case 'i':
 					count += print_number(va_arg(args, int));
 					break;
 				default:
