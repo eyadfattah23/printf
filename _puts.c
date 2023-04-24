@@ -12,7 +12,7 @@ int _puts(va_list list)
 
 	str = va_arg(list, char *);
 	if (str == NULL)
-	str = "";
+	str = "(null)";
 	while (*str != '\0')
 	{
 	_putchar(*str);
