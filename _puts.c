@@ -8,15 +8,15 @@
 int _puts(va_list list)
 {
 	char *str;
-	int i;
+	int i = 0;
 
-	i = 0;
 	str = va_arg(list, char *);
 	if (str == NULL)
-	str = "(null)";
-	while (str[i])
+	str = "";
+	while (*str != '\0')
 	{
-	_putchar(str[i]);
+	_putchar(*str);
+	str++;
 	i++;
 	}
 	return (i);
