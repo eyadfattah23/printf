@@ -28,9 +28,7 @@ int _printf(const char *format, ...)
 	unsigned int i, count = 0;
 
 	if (format == NULL || (*format == '%' && *(format + 1) == '\0'))
-	{
 		return (-1);
-	}
 	va_start(args, format);
 	for (i = 0; format[i] != '\0'; i++)
 	{
@@ -51,7 +49,7 @@ int _printf(const char *format, ...)
 					break;
 				case 'd':
 				case 'i':
-					count += printf("%d", va_arg(args, int));
+					count += print_number(va_arg(args, int));
 					break;
 				default:
 					_putchar('%');
