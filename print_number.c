@@ -6,25 +6,30 @@
  */
 int print_number(int n)
 {
-		int count = 0;
+	int count = 0;
+	char buf[11];
+	int i = 0, j;
 
-		if (n < 0)
-		{
-			count += _putchar('-');
-			n = -n;
-		}
-
-		if (n / 10)
-		{
-			count += print_number(n / 10);
-		}
-
-		count += _putchar(n % 10 + '0');
-
-		if (n == 0)
-		{
-			return (1);
-		}
-
-		return (count);
+	if (n == 0)
+	{
+		_putchar('0');
+		return (1);
+	}
+	if (n < 0)
+	{
+		_putchar('-');
+		count++;
+		n = -n;
+	}
+	while (n > 0)
+	{
+		buf[i++] = n % 10 + '0';
+		n /= 10;
+	}
+	for (j = i - 1; j >= 0; j--)
+	{
+		_putchar(buf[j]);
+		count++;
+	}
+	return (count);
 }
