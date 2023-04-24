@@ -55,9 +55,7 @@ int _printf(const char *format, ...)
 					count += print_binary(va_arg(args, unsigned int));
 					break;
 				default:
-					_putchar('%');
-					_putchar(format[i]);
-					count += 2;
+					count += _putchar('%') + _putchar(format[i]);
 					break;
 			}
 		} else
