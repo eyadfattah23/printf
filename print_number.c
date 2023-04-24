@@ -4,9 +4,10 @@
  * @n: integer to be printed
  * Return: number of digits
  */
-int print_number(int n)
+int print_number(int num)
 {
 		int count = 0;
+		int n = num;
 
 		if (n < 0)
 		{
@@ -23,7 +24,7 @@ int print_number(int n)
 
 		if (n == 0)
 		{
-			return (1);
+			return (0);
 		}
 
 		return (count);
