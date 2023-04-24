@@ -29,7 +29,7 @@ int _printf(const char *format, ...)
 
 	if (format == NULL || (*format == '%' && *(format + 1) == '\0'))
 	{
-		return (0);
+		return (-1);
 	}
 	va_start(args, format);
 	for (i = 0; format[i] != '\0'; i++)
