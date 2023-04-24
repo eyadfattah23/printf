@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
  * print_number - prints an integer
  * @n: integer to be printed
@@ -20,6 +19,11 @@ int print_number(int n)
         }
 
         count += _putchar(n % 10 + '0');
+
+        if (n == 0)
+        {
+                return (1);
+        }
 
         return (count);
 }
