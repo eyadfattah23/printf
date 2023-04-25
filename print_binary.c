@@ -8,19 +8,14 @@
 int binary_helper(unsigned int n)
 {
 	int count = 0;
-	char buffer[33];
-	int i = 0;
 
-	do {
-		buffer[i++] = (n % 2) + '0';
-		n /= 2;
-	} while (n > 0);
-
-	while (--i >= 0)
+	if (n / 2)
 	{
-		_putchar(buffer[i]);
-		count++;
+	count += binary_helper(n / 2);
 	}
+
+	count++;
+	_putchar(n % 2 + '0');
 
 	return (count);
 }
@@ -34,8 +29,6 @@ int print_binary(va_list list)
 	int count = 0;
 	unsigned int n = va_arg(list, unsigned int);
 
-	count += binary_helper(n / 2);
-	_putchar(n % 2 + '0');
-	count++;
+	count += binary_helper(n);
 	return (count);
 }
