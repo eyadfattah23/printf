@@ -36,6 +36,6 @@ int print_binary(va_list list)
 
 	count += binary_helper(n / 2);
 	_putchar(n % 2 + '0');
-
+	count++;
 	return (count);
 }
