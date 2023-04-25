@@ -1,13 +1,25 @@
-#include <unistd.h>
-
+#include "main.h"
 /**
- * _putchar - writes the character c to stdout
- * @c: The character to print
+ * _putchar - fuction to print one letter
  *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
+ * @c: letter to be printed
+ *
+ * Return: int - 1 (Success),
+ * -1 (Failed)
  */
 int _putchar(char c)
 {
-	return (write(1, &c, 1));
+	static int curr_buf_size;
+	static char buffer[1024];
+
+	if (c == -1 || curr_buf_size >= 1024)
+	{
+		write(1, buffer, curr_buf_size);
+		curr_buf_size = 0;
+	}
+
+	if (c != -1)
+		buffer[curr_buf_size++] = c;
+
+	return (1);
 }
