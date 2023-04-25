@@ -45,7 +45,7 @@ int _printf(const char *format, ...)
 				if (result > 0)
 					count += result;
 				else if (result == 0)
-					count += _putchar(format[i - 1]);
+					count += _putchar(format[i - 1]) + _putchar(format[i]);
 			}
 		}
 		else
