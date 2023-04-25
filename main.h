@@ -11,4 +11,5 @@ int _puts(va_list list);
 int _char_print(va_list list);
 int print_number(int);
 int print_binary(unsigned int n);
+int print_float(float f)
 #endif
