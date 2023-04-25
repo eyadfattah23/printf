@@ -18,6 +18,10 @@ int print_u(unsigned int n);
 int print_o(unsigned int n);
 int print_x(unsigned int n);
 int print_X(unsigned int n);
+int print_u_helper(va_list list);
+int print_o_helper(va_list list);
+int print_X_helper(va_list list);
+int print_x_helper(va_list list);
 
 /**
  * struct specifier_func - struct to link each specifier with
