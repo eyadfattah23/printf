@@ -14,6 +14,11 @@ int binary_helper(unsigned int n);
 int print_binary(va_list list);
 int percent_sign_print(va_list list);
 int get_print(char specifier, va_list list);
+int print_u(unsigned int n);
+int print_o(unsigned int n);
+int print_x(unsigned int n);
+int print_X(unsigned int n);
+
 /**
  * struct specifier_func - struct to link each specifier with
  *  the right function

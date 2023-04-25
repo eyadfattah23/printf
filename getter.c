@@ -16,6 +16,10 @@ int get_print(char specifier, va_list list)
 		{'i', print_number_helper},
 		{'d', print_number_helper},
 		{'b', print_binary},
+		{'u', print_u},
+		{'o', print_o},
+		{'x', print_x},
+		{'X', print_X},
 		{'\0', NULL}
 	};
 
