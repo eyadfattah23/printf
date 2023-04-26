@@ -1,4 +1,5 @@
 #include "main.h"
+#include <unistd.h>
 /**
  * _putchar - print one letter
  * @c: letter to be printed
