@@ -2,6 +2,7 @@
 /**
  * _putchar - print one letter
  * @c: letter to be printed
+ * Return 1
  */
 int _putchar(char c)
 {
